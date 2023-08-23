@@ -1544,7 +1544,7 @@ var _ = DescribeSanity("ExpandVolume [Controller Server]", func(sc *TestContext)
 
 	It("should fail if no capacity range is given", func() {
 		expReq := &csi.ControllerExpandVolumeRequest{
-			VolumeId: "",
+			VolumeId: sc.Config.IDGen.GenerateUniqueValidNodeID(),
 			Secrets:  sc.Secrets.ControllerExpandVolumeSecret,
 		}
 		rsp, err := r.ControllerExpandVolume(context.Background(), expReq)
